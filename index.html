@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Letter For You</title>
+
+<style>
+body{
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    background: #ffffff;
+    color: #000000;
+    margin: 0;
+    padding: 30px;
+    line-height: 1.8;
+    font-size: 20px;
+}
+
+.container{
+    max-width: 720px;
+    margin: auto;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+button{
+    font-size: 18px;
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 8px;
+    border: 1px solid #000;
+    background: white;
+    cursor: pointer;
+}
+
+.lang{
+    display: none;
+}
+
+.active{
+    display: block;
+}
+
+.footer{
+    margin-top: 50px;
+    font-size: 16px;
+    text-align: center;
+}
+</style>
+
+<script>
+function showLang(lang){
+    document.getElementById("zh").classList.remove("active");
+    document.getElementById("en").classList.remove("active");
+    document.getElementById(lang).classList.add("active");
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>To You</h1>
+
+<div style="text-align:center;">
+<button onclick="showLang('zh')">中文</button>
+<button onclick="showLang('en')">English</button>
+</div>
+
+<div id="zh" class="lang active">
+
+<p>（中文完整版）</p>
+
+<p>谢谢你xxxxx</p>
+
+<p>愿你xxxx</p>
+
+<p>— Jinxi</p>
+
+</div>
+
+<div id="en" class="lang">
+
+<p>(Write your English version here)</p>
+
+<p>Thank you for the...</p>
+
+<p>Wishing you health, peace and happiness.</p>
+
+<p>— Jinxi</p>
+
+</div>
+
+<div class="footer">
+Tap the button above to switch language.  
+You can zoom in on your phone if needed.
+</div>
+
+</div>
+
+</body>
+</html>
