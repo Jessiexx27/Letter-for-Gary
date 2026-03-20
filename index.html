@@ -1,311 +1,190 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A Letter For You</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A Letter to Gary</title>
 
-  <style>
-    :root{
-      --bg: #fffdf9;
-      --card: #ffffff;
-      --text: #2f2a26;
-      --muted: #8a7f76;
-      --line: #e8ddd3;
-      --accent-soft: #f6ecec;
-      --shadow: 0 10px 30px rgba(80, 60, 40, 0.08);
-    }
+<style>
+:root{
+  --bg:#fffdf9;
+  --card:#ffffff;
+  --text:#2f2a26;
+  --muted:#8a7f76;
+  --line:#e8ddd3;
+  --accent-soft:#f6ecec;
+  --shadow:0 10px 30px rgba(80,60,40,0.08);
+}
 
-    *{
-      box-sizing: border-box;
-    }
+body{
+  margin:0;
+  padding:24px 16px 40px;
+  background:linear-gradient(to bottom,#fffaf5,#fffdf9);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",
+  "Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  line-height:1.95;
+  font-size:18px;
+}
 
-    body{
-      margin: 0;
-      padding: 24px 16px 40px;
-      background: linear-gradient(to bottom, #fffaf5 0%, #fffdf9 100%);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
-                   "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC",
-                   "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.95;
-      font-size: 18px;
-    }
+.container{
+  max-width:820px;
+  margin:auto;
+  background:var(--card);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  padding:32px 22px;
+}
 
-    .container{
-      max-width: 820px;
-      margin: 0 auto;
-      background: var(--card);
-      border: 1px solid rgba(184, 140, 140, 0.15);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      padding: 32px 22px 28px;
-    }
+.header{text-align:center;margin-bottom:24px;}
+h1{margin:0;font-size:32px;}
+.subtitle{margin-top:10px;color:var(--muted);font-size:15px;}
 
-    .header{
-      text-align: center;
-      margin-bottom: 24px;
-    }
+.switcher{text-align:center;margin:20px 0;}
+button{
+  padding:8px 16px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fff;
+  cursor:pointer;
+}
 
-    .eyebrow{
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
+.lang{display:none;}
+.lang.active{display:block;}
 
-    h1{
-      margin: 0;
-      font-size: 34px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      color: #3a312c;
-    }
+.abstract{
+  background:#fdf7f7;
+  padding:12px 16px;
+  border-left:3px solid #d9b2b2;
+  margin-bottom:20px;
+  font-size:15px;
+}
 
-    .subtitle{
-      margin: 14px auto 0;
-      max-width: 620px;
-      font-size: 16px;
-      line-height: 1.8;
-      color: var(--muted);
-    }
+p{margin-bottom:16px;}
 
-    .switcher{
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 26px 0 30px;
-    }
+.signature{margin-top:30px;color:#7a6c63;}
 
-    button{
-      appearance: none;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: #5b4d45;
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
+.footer{
+  margin-top:20px;
+  text-align:center;
+  font-size:12px;
+  color:var(--muted);
+}
+</style>
 
-    button:hover{
-      background: #faf5f2;
-      border-color: #d8c5c5;
-    }
+<script>
+function showLang(lang){
+  document.getElementById("zh").classList.remove("active");
+  document.getElementById("en").classList.remove("active");
+  document.getElementById(lang).classList.add("active");
+}
+</script>
 
-    button.active-btn{
-      background: var(--accent-soft);
-      border-color: #d7b5b5;
-      color: #6e4e4e;
-      font-weight: 600;
-    }
-
-    .letter{
-      margin-top: 6px;
-    }
-
-    .lang{
-      display: none;
-    }
-
-    .lang.active{
-      display: block;
-    }
-
-    .abstract{
-      margin: 0 0 28px;
-      padding: 14px 18px;
-      border-left: 3px solid #d9b2b2;
-      background: #fdf7f7;
-      color: #6b5a52;
-      border-radius: 12px;
-      font-size: 15px;
-      line-height: 1.9;
-    }
-
-    .letter p{
-      margin: 0 0 18px;
-      text-align: left;
-      word-break: break-word;
-    }
-
-    .signature{
-      margin-top: 30px !important;
-      color: #7a6c63;
-      font-size: 16px;
-    }
-
-    .footer{
-      margin-top: 26px;
-      padding-top: 18px;
-      border-top: 1px solid #f0e7de;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .footer .small{
-      display: block;
-      margin-top: 4px;
-      font-size: 12px;
-    }
-
-    @media (max-width: 640px){
-      body{
-        font-size: 17px;
-        padding: 16px 12px 28px;
-      }
-
-      .container{
-        padding: 24px 16px 22px;
-        border-radius: 18px;
-      }
-
-      h1{
-        font-size: 28px;
-      }
-
-      .subtitle{
-        font-size: 15px;
-      }
-
-      .abstract{
-        font-size: 14px;
-        padding: 12px 14px;
-      }
-
-      .letter p{
-        margin-bottom: 16px;
-      }
-    }
-  </style>
-
-  <script>
-    function showLang(lang){
-      const zh = document.getElementById("zh");
-      const en = document.getElementById("en");
-      const zhBtn = document.getElementById("btn-zh");
-      const enBtn = document.getElementById("btn-en");
-
-      zh.classList.remove("active");
-      en.classList.remove("active");
-      zhBtn.classList.remove("active-btn");
-      enBtn.classList.remove("active-btn");
-
-      document.getElementById(lang).classList.add("active");
-      document.getElementById("btn-" + lang).classList.add("active-btn");
-    }
-
-    window.onload = function(){
-      showLang("zh");
-    };
-  </script>
 </head>
 
 <body>
-  <div class="container">
-    <div class="header">
-      <div class="eyebrow">A Letter</div>
-      <h1>To You</h1>
-      <div class="subtitle">
-        A few words I wanted to leave here, quietly and sincerely.
-      </div>
-    </div>
+<div class="container">
 
-    <div class="switcher">
-      <button id="btn-zh" onclick="showLang('zh')">中文</button>
-      <button id="btn-en" onclick="showLang('en')">English</button>
-    </div>
+<div class="header">
+<h1>A Letter to Gary</h1>
+<div class="subtitle">Something I wanted to tell you.</div>
+</div>
 
-    <div class="letter">
-      <div id="zh" class="lang active">
-        <p class="abstract">
-          我多次在低落和无助的时候，靠你的歌声和那些与你有关的记忆支撑过来。也希望你可以平安顺利地度过每一个不顺心意的时刻。
-        </p>
+<div class="switcher">
+<button onclick="showLang('zh')">中文</button>
+<button onclick="showLang('en')">English</button>
+</div>
 
-        <p>写在最前面，感谢你。你是非常非常非常好的人。</p>
+<div id="zh" class="lang active">
 
-        <p>很多时候觉得，你像是部分的我的映射，又像是我的某种依靠。这是一种很奇妙的感觉。我不敢说我懂你，但我好像可以和某一部分的你，悄悄感同身受。</p>
+<p class="abstract">
+我多次在低落和无助的时候，靠你的歌声和那些与你有关的记忆支撑过来。也希望你可以平安顺利地度过每一个不顺心意的时刻。
+</p>
 
-        <p>听你的歌很多年，但近几年才开始来线下看你。因为27年来，我一直是个很闷很沉默的人，对什么人什么事都是淡淡的，几乎没有什么大的情绪波动。</p>
+<p>写在最前面，感谢你。你是非常非常非常好的人。</p>
 
-        <p>直到某天我再次听到你的声音，看到你的现场视频，我整个人像被你激活了一样。我的世界因为你变得更加丰富了起来，不再平淡无感。</p>
+<p>很多时候觉得，你像是部分的我的映射，又像是我的某种依靠。这是一种很奇妙的感觉。我不敢说我懂你，但我好像可以和某一部分的你，悄悄感同身受。</p>
 
-        <p>你的声音对我来说有种安心的幸福感。听到你的声音，想起你，我都会觉得很快乐很幸福。</p>
+<p>听你的歌很多年，但近几年才开始来线下看你。因为27年来，我一直是个很闷很沉默的人，对什么人什么事都是淡淡的，几乎没有什么大的情绪波动。</p>
 
-        <p>你就像我世界中的一个光点，是一块独特的区域，是幸福，是快乐，是希望，你真的带给我很多很多能量。</p>
+<p>直到某天我再次听到你的声音，看到你的现场视频，我整个人像被你激活了一样。我的世界因为你变得更加丰富了起来，不再平淡无感。</p>
 
-        <p>也谢谢你，在我第一次鼓足勇气敞开心扉向你表达喜爱的时候，及时给了我回应。</p>
+<p>你的声音对我来说有种安心的幸福感。听到你的声音，想起你，我都会觉得很快乐很幸福。</p>
 
-        <p>永远会记得，在新加坡场，在唱《数到五答应我》时，你下台互动，在人群中一眼认出我，还喊了我的名字。演出结束后合影又和我打招呼，最后和大家说拜拜时还说了“bye-bye Jessie”。</p>
+<p>你就像我世界中的一个光点，是一块独特的区域，是幸福，是快乐，是希望，你真的带给我很多很多能量。</p>
 
-        <p>那一天对我来说像在做梦一样幸福，我会把这段记忆一直刻在我脑海里的。</p>
+<p>也谢谢你，在我第一次鼓足勇气敞开心扉向你表达喜爱的时候，及时给了我回应。</p>
 
-        <p>你真的是很好的人，希望你越来越好。</p>
+<p>永远会记得，在新加坡场，在唱《数到五答应我》时，你下台互动，在人群中一眼认出我，还喊了我的名字。演出结束后合影又和我打招呼，最后和大家说拜拜时还说了“bye-bye Jessie”。</p>
 
-        <p>想说的话其实有很多，怕写太多你不方便读，这次就先写到这里吧。</p>
+<p>那一天对我来说像在做梦一样幸福，我会把这段记忆一直刻在我脑海里的。</p>
 
-        <p>
-          喜欢你。<br>
-          喜欢你的声音。<br>
-          喜欢你唱歌。<br>
-          喜欢你喊我名字。<br>
-          谢谢你出现在我的世界里。<br>
-          谢谢你成为你。<br>
-          You’re special to me 💗
-        </p>
+<p>你真的是很好的人，希望你越来越好。</p>
 
-        <p class="signature">— Jessie Liu</p>
-      </div>
+<p>想说的话其实有很多，怕写太多你不方便读，这次就先写到这里吧。</p>
 
-      <div id="en" class="lang">
-        <p class="abstract">
-          Many times when I felt low and helpless, I got through it by holding on to your songs and the memories connected to you. I also hope that you can move through every difficult moment safely and peacefully.
-        </p>
+<p>
+喜欢你。<br>
+喜欢你的声音。<br>
+喜欢你唱歌。<br>
+喜欢你喊我名字。<br>
+谢谢你出现在我的世界里。<br>
+谢谢你成为你。<br>
+祝你越来越好，巡演顺利。<br>
+You’re special to me 💗
+</p>
 
-        <p>First of all, thank you. I truly believe you are such a kind and wonderful person.</p>
+<p class="signature">— Jessie Liu</p>
 
-        <p>Many times, I feel like you reflect a part of me, and in some way, you have also become someone I can lean on. It is a very special feeling. I would not say that I truly understand you, but I feel that I can quietly relate to a certain part of you.</p>
+</div>
 
-        <p>I have been listening to your songs for many years, but it was only in recent years that I started coming to see you live. For the past 27 years, I have always been a quiet and reserved person. I have usually been calm about people and things, with almost no strong emotional ups and downs.</p>
+<div id="en" class="lang">
 
-        <p>Until one day, when I heard your voice again and watched your live videos, it felt as if something in me had been awakened. My world became richer because of you. It was no longer plain or numb.</p>
+<p class="abstract">
+Many times when I felt low and helpless, I got through it by holding on to your songs and the memories connected to you. I also hope that you can move through every difficult moment safely and smoothly.
+</p>
 
-        <p>Your voice gives me a sense of comfort and happiness. Whenever I hear your voice or think of you, I feel very happy and at peace.</p>
+<p>First of all, thank you. I truly believe you are such a kind and wonderful person.</p>
 
-        <p>You are like a small light in my world — a unique place filled with happiness, joy, and hope. You have truly given me so much strength and energy.</p>
+<p>Many times, I feel like you reflect a part of me, and in some way, you have also become someone I can lean on. It is a very special feeling. I would not say that I truly understand you, but I feel that I can quietly relate to a certain part of you.</p>
 
-        <p>Thank you as well for responding to me when I first gathered the courage to open my heart and express my feelings to you.</p>
+<p>I have been listening to your songs for many years, but it was only in recent years that I started coming to see you live. For the past 27 years, I have always been a quiet and reserved person. I have usually been calm about people and things, with almost no strong emotional ups and downs.</p>
 
-        <p>I will always remember the Singapore show. During “数到五答应我” when you came down to interact with the crowd, you recognized me right away and called my name. After the show, you greeted me again during the photo, and when you said goodbye to everyone at the end, you even said, “bye-bye Jessie.”</p>
+<p>Until one day, when I heard your voice again and watched your live videos, it felt as if something in me had been awakened. My world became richer because of you. It was no longer plain or numb.</p>
 
-        <p>That day felt dreamlike to me, and I will always keep that memory in my heart.</p>
+<p>Your voice gives me a sense of comfort and happiness. Whenever I hear your voice or think of you, I feel very happy and at peace.</p>
 
-        <p>You really are a very good person, and I hope life keeps getting better and better for you.</p>
+<p>You are like a small light in my world — a unique place filled with happiness, joy, and hope. You have truly given me so much strength and energy.</p>
 
-        <p>I actually have so much more I want to say, but I do not want to make this too long for you to read, so I will stop here for now.</p>
+<p>Thank you as well for responding to me when I first gathered the courage to open my heart and express my feelings to you.</p>
 
-        <p>
-          I love your voice.<br>
-          I love the way you sing.<br>
-          I love the way you call my name.<br>
-          Thank you for appearing in my world.<br>
-          Thank you for being exactly who you are.<br>
-          You’re special to me 💗
-        </p>
+<p>I will always remember the Singapore show. During “Count to Five and Promise Me,” when you came down to interact with the crowd, you recognized me right away and called my name. After the show, you greeted me again during the photo, and when you said goodbye to everyone at the end, you even said, “bye-bye Jessie.”</p>
 
-        <p class="signature">— Jessie Liu</p>
-      </div>
-    </div>
+<p>That day felt dreamlike to me, and I will always keep that memory in my heart.</p>
 
-    <div class="footer">
-      Tap the buttons above to switch languages.
-      <span class="small">Scan the QR code to read the full version (Chinese &amp; English). May require a VPN in mainland China.</span>
-    </div>
-  </div>
+<p>You really are a very good person, and I hope life keeps getting better and better for you.</p>
+
+<p>I actually have so much more I want to say, but I do not want to make this too long, so I will stop here for now.</p>
+
+<p>
+I care about you.<br>
+I love your voice.<br>
+I love the way you sing.<br>
+I love the way you call my name.<br>
+Thank you for being part of my world.<br>
+Thank you for being exactly who you are.<br>
+Wishing you all the best, and a smooth and successful tour.<br>
+You’re special to me 💗
+</p>
+
+<p class="signature">— Jessie Liu</p>
+
+</div>
+
+<div class="footer">
+Tap to switch language
+</div>
+
+</div>
 </body>
 </html>
